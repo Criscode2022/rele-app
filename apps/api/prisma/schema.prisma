@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+enum Role {
+  RESIDENT
+  ADVISOR
+}
+enum ReadingStatus {
+  DRAFT
+  SUBMITTED
+  REVIEWED
+  FLAGGED
+}
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         Role
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  homes        Home[]    @relation("ResidentHomes")
+  readings     Reading[] @relation("ResidentReadings")
+  reviews      Reading[] @relation("AdvisorReviews")
+}
+model Home {
+  id         String    @id @default(cuid())
+  label      String
+  address    String
+  cups       String
+  residentId String
+  resident   User      @relation("ResidentHomes", fields: [residentId], references: [id])
+  readings   Reading[]
+  createdAt  DateTime  @default(now())
+}
+model Reading {
+  id          String        @id @default(cuid())
+  code        String        @unique
+  period      String
+  kwh         Float
+  costEur     Float?
+  notes       String        @default("")
+  advisorNote String        @default("")
+  status      ReadingStatus @default(SUBMITTED)
+  homeId      String
+  home        Home          @relation(fields: [homeId], references: [id])
+  residentId  String
+  resident    User          @relation("ResidentReadings", fields: [residentId], references: [id])
+  advisorId   String?
+  advisor     User?         @relation("AdvisorReviews", fields: [advisorId], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}

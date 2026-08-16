@@ -17,14 +17,19 @@ import { RouterLink } from '@angular/router';
 
     <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <p class="text-xs font-bold tracking-[0.16em] text-sea">ENERGÍA · HOGAR</p>
-      <p class="mt-6 font-display text-[clamp(4.5rem,12vw,9rem)] font-extrabold leading-none tracking-tight text-ink">
+      <p class="mt-4 font-display text-[clamp(3.2rem,8vw,6rem)] font-extrabold leading-none tracking-tight text-ink">
         428<span class="text-sea"> kWh</span>
       </p>
-      <p class="mt-2 text-sm font-semibold text-ink-muted">Lectura de abril · casa de ejemplo</p>
-      <h1 class="mt-8 max-w-2xl font-display text-3xl font-extrabold text-ink md:text-4xl">El consumo, a la vista.</h1>
-      <p class="mt-3 max-w-xl text-lg text-ink-muted">
-        Lecturas de contador y revisión del asesor energético en un solo panel. Sin Excel sueltos ni capturas por WhatsApp.
+      <p class="mt-2 text-sm font-semibold text-ink-muted">Abril · piso en Chamberí · +12 kWh vs marzo</p>
+      <h1 class="mt-6 max-w-2xl font-display text-3xl font-extrabold text-ink md:text-4xl">El consumo, a la vista.</h1>
+      <p class="mt-3 max-w-2xl text-lg text-ink-muted">
+        Lecturas de contador y revisión del asesor en un solo panel. Sin Excel sueltos ni fotos del recibo por WhatsApp. El residente anota el periodo; el asesor marca REVIEWED o FLAGGED con una nota.
       </p>
+      <dl class="mt-6 grid max-w-2xl grid-cols-3 gap-4 text-sm">
+        <div><dt class="text-[11px] font-bold text-ink-muted">MARZO</dt><dd class="font-bold">416 kWh</dd></div>
+        <div><dt class="text-[11px] font-bold text-ink-muted">ABRIL</dt><dd class="font-bold text-sea">428 kWh</dd></div>
+        <div><dt class="text-[11px] font-bold text-ink-muted">ESTADO</dt><dd class="font-bold">Pendiente de revisión</dd></div>
+      </dl>
       <div class="mt-8 flex flex-wrap gap-3">
         <a routerLink="/login" class="rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white">Soy residente</a>
         <a routerLink="/login" class="rounded-full border border-border bg-surface px-6 py-3.5 text-sm font-bold text-ink">Soy asesor</a>
